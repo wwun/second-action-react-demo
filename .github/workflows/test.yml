@@ -1,0 +1,16 @@
+name: Test Project
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code #donwload the code from github repository on the runner (server) which could be in github cloud
+              uses: actions/checkout@v3 #reserved word to run an action, is different from run
+            - name: Install NodeJs  #this step it is not necessary, because this runner already has nodejs installed by defau
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Install Dependencies
+              run: npm ci
+            - name: Run tests
+              run: npm test
