@@ -15,6 +15,7 @@ jobs:
             - name: Run tests
               run: npm test
     deploy:
+      needs: test  #this job will run only if the test job is successful, if it was dependding on more than one, it would be [test, anotherJob]
       runs-on: ubuntu-latest  #every job runs on a different runner
       steps:
         - name: Get Code
